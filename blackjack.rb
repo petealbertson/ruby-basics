@@ -15,8 +15,31 @@
 # Example Output #3:
 # 2 A
 
+card_types = Hash "A" => 11, "J" => 10, "Q" => 10, "K" => 10, "2"  => 2, "3" => 3, "4" => 4, "5" => 5, "6" => 6, "7" => 7, "8" => 8, "9" => 9, "10" => 10
 
+card1 = card_types.keys.sample
+card2 = card_types.keys.sample
+card3 = card_types.keys.sample
+result = card_types.values_at(card1) + card_types.values_at(card2)
+new_result = card_types.values_at(card1) + card_types.values_at(card2) + card_types.values_at(card3)
+total = result[0] + result[1]
+new_total = new_result[0] + new_result[1] + new_result[2]
 
+puts card1, card2
+result.to_a
+puts "You have #{total}."
+
+if total < 17 then
+  puts card3, "You now have #{new_total}."
+end
+
+if total<16 and new_total>21 then
+  puts "BUSTED!"
+end
+
+if new_total > 21 and (card1 or card2 or card3) == "A"
+  then {"A" => 1}
+end
 
 
 # 2. Enhance #1 by showing the total score.
